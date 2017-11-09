@@ -3,58 +3,54 @@
     using Common;
     using Models;
     using Contracts;
-    using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using BlogSystem.ViewModels.Comment;
     using AutoMapper;
+    using BlogSystem.ViewModels.Category;
 
     public class CategoryService : ICategoryService
     {
-        private IRepository<Comment> comments;
+        private IRepository<Category> categories;
 
-        public CategoryService(IRepository<Comment> comments)
+        public CategoryService(IRepository<Category> comments)
         {
-            this.comments = comments;
+            this.categories = comments;
         }
 
-        public CommentVM Add(CommentVM model)
+        public CategoryVM Add(CategoryVM model)
         {
-            var entity = Mapper.Map<Comment>(model);
-            var savedComment = this.comments.Add(entity);
+            var entity = Mapper.Map<Category>(model);
+            var savedComment = this.categories.Add(entity);
 
-            return Mapper.Map<CommentVM>(savedComment);
+            return Mapper.Map<CategoryVM>(savedComment);
         }
 
-        public void Delete(CommentVM model)
+        public void Delete(CategoryVM model)
         {
-            var entity = this.comments.FirstOrDefault(x => x.Id == model.Id);
-            this.comments.Delete(entity);
-            this.comments.SaveChanges();
+            var entity = this.categories.FirstOrDefault(x => x.Id == model.Id);
+            this.categories.Delete(entity);
+            this.categories.SaveChanges();
         }
 
         public bool Exists(int id)
         {
-            return this.comments.Any(com => com.Id == id);
+            return this.categories.Any(com => com.Id == id);
         }
 
-        public IQueryable<Comment> GetAllComments()
+        public IQueryable<Category> GetAllCcategories()
         {
-            return this.comments.GetAll();
+            return this.categories.GetAll();
         }
 
-        public CommentVM GetById(int id)
+        public CategoryVM GetById(int id)
         {
-            return Mapper.Map<CommentVM>(this.comments.FirstOrDefault(com => com.Id == id));
+            return Mapper.Map<CategoryVM>(this.categories.FirstOrDefault(com => com.Id == id));
         }
 
-        public void Update(CommentVM model)
+        public void Update(CategoryVM model)
         {
-            var entinty = this.comments.FirstOrDefault(com => com.Id == model.Id);
-            this.comments.Update(Mapper.Map(model, entinty));
-            this.comments.SaveChanges();
+            var entinty = this.categories.FirstOrDefault(com => com.Id == model.Id);
+            this.categories.Update(Mapper.Map(model, entinty));
+            this.categories.SaveChanges();
         }
     }
 }
