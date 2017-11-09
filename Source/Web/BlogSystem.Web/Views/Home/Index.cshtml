@@ -4,6 +4,8 @@
     ViewBag.Title = "Home Page";
 }
 
+<h1>@ViewBag.Name</h1>
+
 @foreach (var comm in Model)
 {  
     @(comm.Content) @comm.Id

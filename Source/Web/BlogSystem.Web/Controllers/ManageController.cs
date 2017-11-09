@@ -4,22 +4,24 @@
     using System.Threading.Tasks;
     using System.Web;
     using System.Web.Mvc;
+    using Data.Services.Contracts;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
     using ViewModels.Manage;
-    
+
     [Authorize]
-    public class ManageController : Controller
+    public class ManageController : BaseController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
-        public ManageController()
+        public ManageController(IUserService userService) : base(userService)
         {
         }
 
-        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public ManageController(IUserService userService, ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+            : base(userService)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -31,9 +33,9 @@
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -299,7 +301,7 @@
             base.Dispose(disposing);
         }
 
-#region Helpers
+        #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
@@ -350,6 +352,6 @@
             Error
         }
 
-#endregion
+        #endregion
     }
 }
