@@ -19,6 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogSystem.Web", "Web\BlogS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogSystem.Data.Services", "Data\BlogSystem.Data.Services\BlogSystem.Data.Services.csproj", "{6E961C84-9680-4C96-912F-CEAE237230B8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ViewModels", "ViewModels", "{99849FE4-BBA4-40CE-93F1-380E8CB092F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogSystem.ViewModels", "ViewModels\BlogSystem.ViewModels\BlogSystem.ViewModels.csproj", "{519705E7-921E-4EB0-B3B5-4F7B249E58F2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,10 @@ Global
 		{6E961C84-9680-4C96-912F-CEAE237230B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E961C84-9680-4C96-912F-CEAE237230B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E961C84-9680-4C96-912F-CEAE237230B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{519705E7-921E-4EB0-B3B5-4F7B249E58F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{519705E7-921E-4EB0-B3B5-4F7B249E58F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{519705E7-921E-4EB0-B3B5-4F7B249E58F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{519705E7-921E-4EB0-B3B5-4F7B249E58F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,5 +63,6 @@ Global
 		{362B01F7-3D62-4884-8565-6F11B9C588D6} = {A74EEEE1-45FC-4273-8547-A77F43F1DE29}
 		{7257CECA-AFB3-47E2-8F8E-E7B6388E29D9} = {A2420426-3AC1-46DE-8855-B6C169ED2294}
 		{6E961C84-9680-4C96-912F-CEAE237230B8} = {64DE3C6D-6DFE-4019-9FFB-99DFBAC7A295}
+		{519705E7-921E-4EB0-B3B5-4F7B249E58F2} = {99849FE4-BBA4-40CE-93F1-380E8CB092F2}
 	EndGlobalSection
 EndGlobal

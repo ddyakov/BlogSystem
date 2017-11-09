@@ -8,7 +8,7 @@
     using System.Web;
     using Data.Models;
     using Data.Models.Migrations;
-    using Infrastructure;
+    using ViewModels.Infrastructure;
 
     public class MvcApplication : HttpApplication
     {
@@ -20,7 +20,7 @@
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            AutoMapperConfig.Config(Assembly.GetExecutingAssembly());
+            AutoMapperConfig.Config(Assembly.GetAssembly(typeof(AutoMapperConfig)));
         }
     }
 }

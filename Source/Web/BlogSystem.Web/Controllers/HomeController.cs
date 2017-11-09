@@ -6,7 +6,7 @@
     using Data.Services.Contracts;
     using ViewModels.Comment;
 
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private ICommentsService commentsService;
 

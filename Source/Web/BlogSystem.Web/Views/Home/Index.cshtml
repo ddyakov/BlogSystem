@@ -1,16 +1,14 @@
-﻿@model  List<BlogSystem.Web.ViewModels.Comment.CommentVM>
+﻿@model  List<BlogSystem.ViewModels.Comment.CommentVM>
 
 @{
     ViewBag.Title = "Home Page";
 }
 
 @foreach (var comm in Model)
-{
-    <h1>@comm.ApplicationUserId</h1>
-    <h1>@comm.Content</h1>
-    <h1>@comm.Id</h1>
+{  
+    @(comm.Content) @comm.Id
 }
-
+ 
 
 @*<div class="jumbotron">
         <h1>ASP.NET</h1>
