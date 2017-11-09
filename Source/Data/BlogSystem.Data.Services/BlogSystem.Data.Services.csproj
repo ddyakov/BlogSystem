@@ -45,7 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\ICommentsService.cs" />
-    <Compile Include="Contracts\ISendProvider.cs" />
     <Compile Include="Implementation\CommentsService.cs" />
     <Compile Include="Implementation\EmailService.cs" />
     <Compile Include="Implementation\SmsService.cs" />
