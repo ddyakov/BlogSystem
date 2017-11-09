@@ -9,10 +9,8 @@
 
     public class UserVM : IMapFrom<ApplicationUser>
     {
-        public UserVM(ApplicationUser user)
+        public UserVM()
         {
-            Mapper.Map(user, this);
-
             this.Posts = new List<PostVM>();
             this.Comments = new List<CommentVM>();
         }
@@ -22,6 +20,10 @@
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
+
+        public string UserName { get; set; }
+
+        public string Email { get; set; }
 
         public List<PostVM> Posts { get; set; }
 
