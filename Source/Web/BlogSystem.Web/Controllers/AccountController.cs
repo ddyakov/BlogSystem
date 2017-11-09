@@ -137,24 +137,24 @@
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
-                    EmailService emailService = new EmailService();
-
                     var message = new IdentityMessage
                     {
-                        Subject = "Thank you for registration!",
+                        Subject = "Thank you for your registration!",
                         Body =
-                            $"Welcome, {user.UserName}! \n Thank you for your registration, hope you will like the page.\n " +
+                            $"Welcome, <strong>{user.UserName}</strong>! <br> " +
+                            $"Thank you for your registration, hope you will like the page. <br> " +
                             $"Remember, your username is your email!",
                         Destination = user.Email
                     };
 
-                    await emailService.SendAsync(message);
+                    await EmailService.SendEmail(message);
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
                     return RedirectToAction("Index", "Home");
                 }
+
                 AddErrors(result);
             }
 
