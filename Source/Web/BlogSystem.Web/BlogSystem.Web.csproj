@@ -206,37 +206,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\AutoMapperConfig.cs" />
-    <Compile Include="Infrastructure\IHaveCustomMappings.cs" />
-    <Compile Include="Infrastructure\IMapFrom.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\Account\ExternalLoginConfirmationVM.cs" />
-    <Compile Include="ViewModels\Account\ExternalLoginListVM.cs" />
-    <Compile Include="ViewModels\Account\ForgotPasswordVM.cs" />
-    <Compile Include="ViewModels\Account\ForgotVM.cs" />
-    <Compile Include="ViewModels\Account\LoginVM.cs" />
-    <Compile Include="ViewModels\Account\RegisterVM.cs" />
-    <Compile Include="ViewModels\Account\ResetPasswordVM.cs" />
-    <Compile Include="ViewModels\Account\SendCodeVM.cs" />
-    <Compile Include="ViewModels\Account\VerifyCodeVM.cs" />
-    <Compile Include="ViewModels\Category\CategoryVM.cs" />
-    <Compile Include="ViewModels\Comment\CommentVM.cs" />
-    <Compile Include="ViewModels\Manage\AddPhoneNumberVM.cs" />
-    <Compile Include="ViewModels\Manage\ChangePasswordVM.cs" />
-    <Compile Include="ViewModels\Manage\ConfigureTwoFactorVM.cs" />
-    <Compile Include="ViewModels\Manage\FactorVM.cs" />
-    <Compile Include="ViewModels\Manage\IndexVM.cs" />
-    <Compile Include="ViewModels\Manage\ManageLoginsVM.cs" />
-    <Compile Include="ViewModels\Manage\SetPasswordVM.cs" />
-    <Compile Include="ViewModels\Manage\VerifyPhoneNumberVM.cs" />
-    <Compile Include="ViewModels\Post\PostVM.cs" />
-    <Compile Include="ViewModels\User\UserVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -326,6 +303,10 @@
     <ProjectReference Include="..\..\Data\BlogSystem.Data.Services\BlogSystem.Data.Services.csproj">
       <Project>{6e961c84-9680-4c96-912f-ceae237230b8}</Project>
       <Name>BlogSystem.Data.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ViewModels\BlogSystem.ViewModels\BlogSystem.ViewModels.csproj">
+      <Project>{519705e7-921e-4eb0-b3b5-4f7b249e58f2}</Project>
+      <Name>BlogSystem.ViewModels</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -16,22 +16,22 @@ namespace BlogSystem.Web.App_Start
     using BlogSystem.Data.Services.Contracts;
     using BlogSystem.Data.Services.Implementation;
 
-    public static class NinjectWebCommon 
+    public static class NinjectWebCommon
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 
-        public static void Start() 
+        public static void Start()
         {
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
             bootstrapper.Initialize(CreateKernel);
         }
-        
+
         public static void Stop()
         {
             bootstrapper.ShutDown();
         }
-        
+
         private static IKernel CreateKernel()
         {
             var kernel = new StandardKernel();
@@ -55,8 +55,9 @@ namespace BlogSystem.Web.App_Start
             kernel.Bind<ApplicationDbContext>().To<ApplicationDbContext>();
             kernel.Bind(typeof(IRepository<>)).To(typeof(Repository<>));
             kernel.Bind(typeof(IDeletableEntityRepository<>)).To(typeof(DeletableEntityRepository<>));
-            
+
             kernel.Bind<ICommentsService>().To<CommentsService>();
-        }        
+            kernel.Bind<IUserService>().To<UserService>();
+        }
     }
 }
