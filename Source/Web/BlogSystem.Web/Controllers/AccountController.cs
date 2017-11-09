@@ -8,20 +8,22 @@
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
     using Data.Models;
+    using Data.Services.Contracts;
     using Data.Services.Implementation;
     using ViewModels.Account;
 
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
-        public AccountController()
+        public AccountController(IUserService userService) : base(userService)
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public AccountController(IUserService userService,ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+            : base(userService)
         {
             UserManager = userManager;
             SignInManager = signInManager;

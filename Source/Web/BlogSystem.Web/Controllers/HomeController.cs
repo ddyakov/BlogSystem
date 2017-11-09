@@ -10,7 +10,8 @@
     {
         private ICommentsService commentsService;
 
-        public HomeController(ICommentsService commentsService)
+        public HomeController(ICommentsService commentsService, IUserService userService) 
+            : base (userService)
         {
             this.commentsService = commentsService;
         }
@@ -19,6 +20,8 @@
         {
             var model = this.commentsService.GetAllComments();
             var vms = Mapper.Map<List<CommentVM>>(model);
+
+            ViewBag.Name = this.CurrentUser?.Email;
 
             return View(vms);
         }
