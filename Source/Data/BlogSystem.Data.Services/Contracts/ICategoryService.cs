@@ -1,10 +1,10 @@
-﻿using BlogSystem.Data.Models;
-using BlogSystem.ViewModels.Category;
-using BlogSystem.ViewModels.Comment;
-using System.Linq;
-
-namespace BlogSystem.Data.Services.Contracts
+﻿namespace BlogSystem.Data.Services.Contracts
 {
+    using BlogSystem.Data.Models;
+    using BlogSystem.ViewModels.Category;
+    using BlogSystem.ViewModels.Comment;
+    using System.Linq;
+
     public interface ICategoryService
     {
         IQueryable<Category> GetAllCcategories();
