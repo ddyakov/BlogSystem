@@ -55,8 +55,9 @@
             }
         }
 
-        public virtual void Add(T entity)
+        public virtual T Add(T entity)
         {
+            T savedEntity = null;
             try
             {
                 DbEntityEntry entry = this.Context.Entry(entity);
@@ -66,13 +67,15 @@
                 }
                 else
                 {
-                    this.DbSet.Add(entity);
+                    savedEntity = this.DbSet.Add(entity);
                 }
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+
+            return savedEntity;
         }
 
         public virtual T FirstOrDefault(Expression<Func<T, bool>> conditions)

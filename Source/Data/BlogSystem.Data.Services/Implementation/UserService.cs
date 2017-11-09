@@ -39,33 +39,32 @@
 
         public UserVM Add(UserVM model)
         {
-            var entity = this.users.FirstOrDefault(x => x.Id == model.Id);
+            var entity = Mapper.Map<ApplicationUser>(model);
             this.users.Add(entity);
-            var vm = Mapper.Map<UserVM>(entity);
 
-            return vm;
+            return Mapper.Map<UserVM>(entity);
         }
 
         public void Update(UserVM model)
         {
             var entity = this.users.FirstOrDefault(x => x.Id == model.Id);
-            this.users.Update(entity);
+            this.users.Update(Mapper.Map(model, entity));
             this.users.SaveChanges();
         }
 
-        public bool Exists(string email)
+        public bool EmailExists(string email)
         {
             return this.users.Any(s => s.Email == email);
         }
 
-        public bool Exists(string id, string email)
+        public bool Exists(string id)
         {
-            return this.users.Any(s => s.Id != id && s.Email == email);
+            return this.users.Any(s => s.Id == id);
         }
 
         public void Delete(UserVM model)
         {
-            var entity = this.users.FirstOrDefault(x => x.Id == model.Id);
+            var entity = users.FirstOrDefault(x => x.Id == model.Id);
             this.users.Delete(entity);
             this.users.SaveChanges();
         }

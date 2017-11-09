@@ -16,9 +16,9 @@
 
         void Update(UserVM entity);
 
-        bool Exists(string id);
+        bool EmailExists(string email);
 
-        bool Exists(string id, string email);
+        bool Exists(string id);
 
         void Delete(UserVM entity);
     }

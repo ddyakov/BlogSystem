@@ -10,7 +10,7 @@
 
         T Get(int id);
 
-        void Add(T entity);
+        T Add(T entity);
 
         bool All(Expression<Func<T, bool>> conditions);
 
