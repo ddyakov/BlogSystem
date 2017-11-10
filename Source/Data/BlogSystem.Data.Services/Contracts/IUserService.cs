@@ -12,14 +12,14 @@
 
         UserVM GetByEmail(string email);
 
-        UserVM Add(UserVM entity);
+        UserVM Add(UserVM model);
 
-        void Update(UserVM entity);
+        void Update(UserVM model);
 
         bool EmailExists(string email);
 
         bool Exists(string id);
 
-        void Delete(UserVM entity);
+        void Delete(UserVM model);
     }
 }
