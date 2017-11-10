@@ -7,13 +7,13 @@ namespace BlogSystem.Data.Models.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Initialmigration : IMigrationMetadata
+    public sealed partial class Initialmigation : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Initialmigration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Initialmigation));
         
         string IMigrationMetadata.Id
         {
-            get { return "201711090210385_Initial migration"; }
+            get { return "201711101522340_Initial migation"; }
         }
         
         string IMigrationMetadata.Source

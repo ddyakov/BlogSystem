@@ -9,10 +9,13 @@
 
     public class ApplicationUser : IdentityUser
     {
+        private ICollection<Post> posts;
+        private ICollection<Comment> comments;
+
         public ApplicationUser()
         {
-            this.Posts = new List<Post>();
-            this.Comments = new List<Comment>();
+            this.posts = new HashSet<Post>();
+            this.comments = new HashSet<Comment>();
         }
 
         [Key]
@@ -22,9 +25,17 @@
 
         public string LastName { get; set; }
 
-        public List<Post> Posts { get; set; }
+        public virtual ICollection<Post> Posts
+        {
+            get => this.posts;
+            set => this.posts = value;
+        }
 
-        public List<Comment> Comments { get; set; }
+        public virtual ICollection<Comment> Comments
+        {
+            get => this.comments;
+            set => this.comments = value;
+        }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

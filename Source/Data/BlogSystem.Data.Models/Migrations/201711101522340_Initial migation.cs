@@ -3,7 +3,7 @@ namespace BlogSystem.Data.Models.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initialmigration : DbMigration
+    public partial class Initialmigation : DbMigration
     {
         public override void Up()
         {
@@ -25,11 +25,14 @@ namespace BlogSystem.Data.Models.Migrations
                         Header = c.String(),
                         CreatedOn = c.DateTime(nullable: false),
                         ModifiedOn = c.DateTime(),
-                        ApplicationUser_Id = c.String(maxLength: 128),
+                        ApplicationUserId = c.String(maxLength: 128),
+                        Category_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUser_Id)
-                .Index(t => t.ApplicationUser_Id);
+                .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUserId)
+                .ForeignKey("dbo.Categories", t => t.Category_Id)
+                .Index(t => t.ApplicationUserId)
+                .Index(t => t.Category_Id);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -72,16 +75,16 @@ namespace BlogSystem.Data.Models.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         ApplicationUserId = c.String(maxLength: 128),
+                        PostId = c.Int(nullable: false),
                         Content = c.String(),
                         CreatedOn = c.DateTime(nullable: false),
                         ModifiedOn = c.DateTime(),
-                        Post_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUserId)
-                .ForeignKey("dbo.Posts", t => t.Post_Id)
+                .ForeignKey("dbo.Posts", t => t.PostId, cascadeDelete: true)
                 .Index(t => t.ApplicationUserId)
-                .Index(t => t.Post_Id);
+                .Index(t => t.PostId);
             
             CreateTable(
                 "dbo.AspNetUserLogins",
@@ -118,44 +121,28 @@ namespace BlogSystem.Data.Models.Migrations
                 .PrimaryKey(t => t.Id)
                 .Index(t => t.Name, unique: true, name: "RoleNameIndex");
             
-            CreateTable(
-                "dbo.PostCategories",
-                c => new
-                    {
-                        Post_Id = c.Int(nullable: false),
-                        Category_Id = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => new { t.Post_Id, t.Category_Id })
-                .ForeignKey("dbo.Posts", t => t.Post_Id, cascadeDelete: true)
-                .ForeignKey("dbo.Categories", t => t.Category_Id, cascadeDelete: true)
-                .Index(t => t.Post_Id)
-                .Index(t => t.Category_Id);
-            
         }
         
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.PostCategories", "Category_Id", "dbo.Categories");
-            DropForeignKey("dbo.PostCategories", "Post_Id", "dbo.Posts");
+            DropForeignKey("dbo.Posts", "Category_Id", "dbo.Categories");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Posts", "ApplicationUser_Id", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Posts", "ApplicationUserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Comments", "Post_Id", "dbo.Posts");
+            DropForeignKey("dbo.Comments", "PostId", "dbo.Posts");
             DropForeignKey("dbo.Comments", "ApplicationUserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
-            DropIndex("dbo.PostCategories", new[] { "Category_Id" });
-            DropIndex("dbo.PostCategories", new[] { "Post_Id" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
-            DropIndex("dbo.Comments", new[] { "Post_Id" });
+            DropIndex("dbo.Comments", new[] { "PostId" });
             DropIndex("dbo.Comments", new[] { "ApplicationUserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.Posts", new[] { "ApplicationUser_Id" });
-            DropTable("dbo.PostCategories");
+            DropIndex("dbo.Posts", new[] { "Category_Id" });
+            DropIndex("dbo.Posts", new[] { "ApplicationUserId" });
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");

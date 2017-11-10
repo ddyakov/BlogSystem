@@ -1,16 +1,15 @@
 ﻿namespace BlogSystem.Data.Services.Implementation
 {
-    using BlogSystem.Data.Services.Contracts;
+    using Contracts;
     using System.Linq;
-    using BlogSystem.Data.Models;
-    using BlogSystem.ViewModels.Post;
-    using BlogSystem.Data.Common;
+    using Models;
+    using ViewModels.Post;
+    using Common;
     using AutoMapper;
 
     public class PostService : IPostService
     {
-        IRepository<Post> posts;
-        private object mapper;
+        private IRepository<Post> posts;
 
         public PostService(IRepository<Post> posts)
         {
@@ -21,6 +20,7 @@
         {
             var entity = Mapper.Map<Post>(model);
             var savedEntity = this.posts.Add(entity);
+
             return Mapper.Map<PostVM>(savedEntity);
         }
 

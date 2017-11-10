@@ -1,29 +1,25 @@
 ﻿namespace BlogSystem.Web.Controllers
 {
     using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
     using System.Web.Mvc;
     using AutoMapper;
     using Data.Services.Contracts;
+    using ViewModels.Category;
     using ViewModels.Comment;
+    using ViewModels.User;
 
     public class HomeController : BaseController
     {
-        private ICommentsService commentsService;
-
-        public HomeController(ICommentsService commentsService, IUserService userService) 
+        public HomeController(IUserService userService) 
             : base (userService)
         {
-            this.commentsService = commentsService;
         }
 
         public ActionResult Index()
         {
-            var model = this.commentsService.GetAllComments();
-            var vms = Mapper.Map<List<CommentVM>>(model);
-
-            ViewBag.Name = this.CurrentUser?.Email;
-
-            return View(vms);
+            return View();
         }
 
         public ActionResult About()
