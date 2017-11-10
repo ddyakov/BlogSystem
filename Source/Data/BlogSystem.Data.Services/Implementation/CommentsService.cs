@@ -42,7 +42,7 @@
 
             if (entity != null)
             {
-                this.comments.Delete(entity);
+                this.comments.DeleteAndSave(entity);
             }
         }
 
@@ -52,7 +52,7 @@
 
             if (entity != null)
             {
-                this.comments.Update(entity);
+                this.comments.UpdateAndSave(entity);
             }
         }
 

@@ -74,7 +74,6 @@
             {
                 throw ex;
             }
-
             return savedEntity;
         }
 
@@ -106,6 +105,12 @@
             {
                 throw ex;
             }
+        }
+
+        public virtual void UpdateAndSave(T entity)
+        {
+            this.Update(entity);
+            this.SaveChanges();
         }
 
         public virtual bool All(Expression<Func<T, bool>> conditions)
@@ -141,6 +146,12 @@
             }
         }
 
+        public virtual void DeleteAndSave(T entity)
+        {
+            this.Delete(entity);
+            this.SaveChanges();
+        }
+
         public virtual void Delete(int id)
         {
             try
@@ -158,12 +169,24 @@
             }
         }
 
+        public virtual void DeleteAndSave(int id)
+        {
+            this.Delete(id);
+            this.SaveChanges();
+        }
+
         public virtual void Delete(Expression<Func<T, bool>> conditions)
         {
             foreach (var item in this.GetAll().Where(conditions))
             {
                 this.Delete(item);
             }
+        }
+
+        public virtual void DeleteAndSave(Expression<Func<T, bool>> condition)
+        {
+            this.Delete(condition);
+            this.SaveChanges();
         }
 
         public virtual IQueryable<T> Where(Expression<Func<T, bool>> conditions)

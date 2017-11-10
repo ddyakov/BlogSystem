@@ -48,8 +48,7 @@
         public void Update(UserVM model)
         {
             var entity = this.users.FirstOrDefault(x => x.Id == model.Id);
-            this.users.Update(Mapper.Map(model, entity));
-            this.users.SaveChanges();
+            this.users.UpdateAndSave(Mapper.Map(model, entity));
         }
 
         public bool EmailExists(string email)
@@ -65,8 +64,7 @@
         public void Delete(UserVM model)
         {
             var entity = users.FirstOrDefault(x => x.Id == model.Id);
-            this.users.Delete(entity);
-            this.users.SaveChanges();
+            this.users.DeleteAndSave(entity);
         }
     }
 }

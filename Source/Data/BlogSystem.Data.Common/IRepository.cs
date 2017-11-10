@@ -18,11 +18,19 @@
 
         void Update(T entity);
 
+        void UpdateAndSave(T entity);
+
         void Delete(T entity);
+
+        void DeleteAndSave(T entity);
 
         void Delete(int id);
 
+        void DeleteAndSave(int id);
+        
         void Delete(Expression<Func<T, bool>> conditions);
+
+        void DeleteAndSave(Expression<Func<T, bool>> conditions);
 
         IQueryable<T> Where(Expression<Func<T, bool>> conditions);
 

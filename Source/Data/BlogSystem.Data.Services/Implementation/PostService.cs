@@ -27,8 +27,7 @@
         public void Delete(PostVM model)
         {
             var entity = this.posts.FirstOrDefault(p => p.Id == model.Id);
-            this.posts.Delete(entity);
-            this.posts.SaveChanges();
+            this.posts.DeleteAndSave(entity);
         }
 
         public bool Exists(int id)
@@ -49,8 +48,7 @@
         public void Update(PostVM model)
         {
             var entity = this.posts.Get(model.Id);
-            this.posts.Update(Mapper.Map(model, entity));
-            this.posts.SaveChanges();
+            this.posts.UpdateAndSave(Mapper.Map(model, entity));
         }
     }
 }

@@ -27,8 +27,7 @@
         public void Delete(CategoryVM model)
         {
             var entity = this.categories.FirstOrDefault(x => x.Id == model.Id);
-            this.categories.Delete(entity);
-            this.categories.SaveChanges();
+            this.categories.DeleteAndSave(entity);
         }
 
         public bool Exists(int id)
@@ -49,8 +48,7 @@
         public void Update(CategoryVM model)
         {
             var entinty = this.categories.FirstOrDefault(com => com.Id == model.Id);
-            this.categories.Update(Mapper.Map(model, entinty));
-            this.categories.SaveChanges();
+            this.categories.UpdateAndSave(Mapper.Map(model, entinty));
         }
     }
 }
