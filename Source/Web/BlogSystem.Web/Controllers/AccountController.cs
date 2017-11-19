@@ -9,7 +9,6 @@
     using Microsoft.Owin.Security;
     using Data.Models;
     using Data.Services.Contracts;
-    using Data.Services.Implementation;
     using ViewModels.Account;
 
     [Authorize]
