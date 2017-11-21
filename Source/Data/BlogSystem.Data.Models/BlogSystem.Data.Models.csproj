@@ -61,9 +61,13 @@
     <Compile Include="Entities\DeletableEntity.cs" />
     <Compile Include="Entities\IAuditInfo.cs" />
     <Compile Include="Entities\IDeletableEntity.cs" />
-    <Compile Include="Migrations\201711090210385_Initial migration.cs" />
-    <Compile Include="Migrations\201711090210385_Initial migration.Designer.cs">
-      <DependentUpon>201711090210385_Initial migration.cs</DependentUpon>
+    <Compile Include="Migrations\201711101522340_Initial migation.cs" />
+    <Compile Include="Migrations\201711101522340_Initial migation.Designer.cs">
+      <DependentUpon>201711101522340_Initial migation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711101634180_something.cs" />
+    <Compile Include="Migrations\201711101634180_something.Designer.cs">
+      <DependentUpon>201711101634180_something.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Post.cs" />
@@ -74,8 +78,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711090210385_Initial migration.resx">
-      <DependentUpon>201711090210385_Initial migration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711101522340_Initial migation.resx">
+      <DependentUpon>201711101522340_Initial migation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711101634180_something.resx">
+      <DependentUpon>201711101634180_something.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -35,7 +35,7 @@
             return this.categories.Any(com => com.Id == id);
         }
 
-        public IQueryable<Category> GetAllCcategories()
+        public IQueryable<Category> GetAllCategories()
         {
             return this.categories.GetAll();
         }

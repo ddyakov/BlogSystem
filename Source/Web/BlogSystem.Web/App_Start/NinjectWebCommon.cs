@@ -59,6 +59,7 @@ namespace BlogSystem.Web.App_Start
             kernel.Bind<ICommentsService>().To<CommentsService>();
             kernel.Bind<IUserService>().To<UserService>();
             kernel.Bind<IPostService>().To<PostService>();
+            kernel.Bind<ICategoryService>().To<CategoryService>();
         }
     }
 }

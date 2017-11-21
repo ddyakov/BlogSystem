@@ -1,7 +1,7 @@
 ﻿namespace BlogSystem.Data.Services.Contracts
 {
-    using BlogSystem.Data.Models;
-    using BlogSystem.ViewModels.Post;
+    using Models;
+    using ViewModels.Post;
     using System.Linq;
 
     public interface IPostService

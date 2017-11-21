@@ -8,7 +8,7 @@
     public class BaseController : Controller
     {
         private const string CURRENT_USER = "CurrentUser";
-        private IUserService userService;
+        public IUserService userService;
             
         public BaseController(IUserService userService)
         {

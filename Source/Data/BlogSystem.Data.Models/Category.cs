@@ -5,9 +5,11 @@
 
     public class Category
     {
+        private ICollection<Post> posts;
+
         public Category()
         {
-            this.Posts = new List<Post>();
+            this.posts = new HashSet<Post>();
         }
 
         [Key]
@@ -15,6 +17,10 @@
 
         public string Name { get; set; }
 
-        public List<Post> Posts { get; set; }
+        public virtual ICollection<Post> Posts
+        {
+            get => this.posts;
+            set => this.posts = value;
+        }
     }
 }

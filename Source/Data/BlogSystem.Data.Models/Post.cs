@@ -6,10 +6,11 @@
 
     public class Post
     {
+        private ICollection<Comment> comments;
+
         public Post()
         {
-            this.Categories = new List<Category>();
-            this.Comments = new List<Comment>();
+            this.comments = new HashSet<Comment>();
         }
 
         [Key]
@@ -23,10 +24,14 @@
 
         public DateTime? ModifiedOn { get; set; }
 
-        public ApplicationUser ApplicationUser { get; set; }
+        public string ApplicationUserId { get; set; }
 
-        public List<Category> Categories { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
 
-        public List<Comment> Comments { get; set; }
+        public virtual ICollection<Comment> Comments
+        {
+            get => this.comments;
+            set => this.comments = value;
+        }
     }
 }

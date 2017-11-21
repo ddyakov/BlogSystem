@@ -7,7 +7,7 @@
 
     public interface ICategoryService
     {
-        IQueryable<Category> GetAllCcategories();
+        IQueryable<Category> GetAllCategories();
 
         CategoryVM GetById(int id);
         

@@ -7,11 +7,6 @@
 
     public class CategoryVM : IMapFrom<Category>
     {
-        public CategoryVM()
-        {
-            this.Posts = new List<PostVM>();   
-        }
-
         public int Id { get; set; }
 
         public string Name { get; set; }
